@@ -1,0 +1,26 @@
+@use './variables' as *;
+
+@mixin flex-center($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: #{$breakpoint-mobile}) {
+      @content;
+    }
+  } @else if $breakpoint == tablet {
+    @media (max-width: #{$breakpoint-tablet}) {
+      @content;
+    }
+  }
+}
+
+@mixin smooth-transition($property: all) {
+  transition: $property 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+

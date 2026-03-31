@@ -1,0 +1,146 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.container {
+  width: 100%;
+  padding: 1rem;
+  flex-grow: 1;
+  @include flex-center(column);
+}
+
+%card-base {
+  width: 100%;
+  max-width: 480px;
+  padding: 2.5rem;
+  
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(15px);
+  box-shadow: $shadow-soft;
+  border-radius: $radius-lg;
+  
+  @include smooth-transition(transform);
+  
+  @include respond-to(mobile) {
+    padding: 1.5rem;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.card {
+  @extend %card-base;
+}
+
+.header {
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+  .cityName {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 600;
+    color: $color-text-primary;
+  }
+
+  .date {
+    display: block; 
+    margin-top: 0.25rem;
+    font-size: 0.9rem;
+    color: $color-text-secondary;
+  }
+}
+
+.mainInfo {
+  text-align: center;
+
+  .tempContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    @include respond-to(mobile) {
+      gap: 0.5rem;
+    }
+  }
+
+  .temperature {
+    line-height: 1;
+    font-size: 4rem;
+    font-weight: 700;
+    color: $color-text-primary;
+
+    @include respond-to(mobile) {
+      font-size: 3rem;
+    }
+  }
+
+  .icon {
+    width: 100px;
+    height: 100px;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  }
+
+  .description {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: $color-text-secondary;
+    text-transform: capitalize;
+  }
+}
+
+.details {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  
+  grid-template-columns: repeat(3, 1fr);
+  
+  @include respond-to(mobile) {
+    grid-template-columns: 1fr;
+  }
+
+  .detailItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+
+    .label {
+      font-size: 0.8rem;
+      color: $color-text-secondary;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .value {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: $color-text-primary;
+    }
+  }
+}
+
+.loading, 
+.prompt {
+  @extend %card-base;
+  text-align: center;
+  color: $color-text-secondary;
+}
+
+.error {
+  @extend %card-base;
+  text-align: center;
+  color: #d32f2f;
+  background: rgba(211, 47, 47, 0.1);
+}
