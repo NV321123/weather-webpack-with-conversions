@@ -1,0 +1,22 @@
+{
+  "name": "React + Webpack Dev Container",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:24",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-typescript-next"
+      ],
+      "settings": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true
+      }
+    }
+  },
+  // Webpack Dev Server по умолчанию запускается на порту 3000
+  "forwardPorts": [3000],
+  "postCreateCommand": "npm install",
+  "remoteUser": "node",
+  "updateRemoteUserUID": true
+}
